@@ -1,0 +1,25 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+        "license": {
+            "name": "MIT",
+            "url": "https://github.com/TacEtarip/loscreadores/blob/main/LICENSE"
+        },
+        "contact": {
+            "email": "hu3rtas@outlook.com",
+            "name": "Luis Huertas"
+        },
+        "title":"Template TypeScript Node",
+        "version":"1.0.0",
+        "description": "Template para realizar una aplicación de nodejs con express"
+    },
+    "servers": [
+        {
+            "url":"http://localhost:8081"
+        }
+    ],
+    "paths": {
+        
+    }
+}
+
