@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import bunyan from 'bunyan';
 import pjs from '../../package.json';
 

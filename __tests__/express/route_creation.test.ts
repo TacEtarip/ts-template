@@ -27,7 +27,7 @@ describe('Test para la creacion correcta de una ruta', () => {
     let rutaCreada: Route;
 
     beforeAll(() => {
-        appExp = new ExpressAPP(8082);
+        appExp = new ExpressAPP(8080);
         rutaCreada = crearRutaTest();
         appExp.app.use(rutaCreada.ruta, rutaCreada.router);
     });

@@ -1,4 +1,3 @@
-import http from 'http';
 import throng from 'throng';
 import { getConfig } from './config/config';
 import ExpressAPP from './server/ExpressAPP';
@@ -13,7 +12,7 @@ const start = (id: number) => {
     configENV.log().info(`Id Worker ${id}`);
     const serverApp = new ExpressAPP(PORT);
     const server = serverApp.server;
-    
+
     server.on('listening', () => {
         configENV.log().info('http://localhost:' + PORT);
     });
