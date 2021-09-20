@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
 import bunyan from 'bunyan';
@@ -11,7 +12,7 @@ const getLogger = (serviceName: string, serviceVersion: string) =>
 bunyan.createLogger({ name: `${serviceName}:${serviceVersion}` });
 
 /**
- * * Configuración segun env
+ * * Configuración segun env 
  */
 const config = {
 	development: {
@@ -27,7 +28,7 @@ const config = {
     test: {
         estado: 'test',
         log: (): bunyan => getLogger('TEST', version),
-    }
+    },
 };
 
 /**
@@ -35,6 +36,7 @@ const config = {
  * @param env 
  * @returns 
  */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const getConfig = (env: string) => {
     switch (env) {
         case 'development':

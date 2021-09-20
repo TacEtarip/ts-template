@@ -35,7 +35,7 @@ class ExpressAPP implements IExpressNecesaryFunctions, IExpressNecesaryParams {
      *
      * @memberof ExpressAPP
      */
-    agregarConfiguracionBasica() {
+    agregarConfiguracionBasica(): void {
         this.app.use(helmet());
         this.app.use(compression());
         this.app.use(cors());
@@ -50,7 +50,7 @@ class ExpressAPP implements IExpressNecesaryFunctions, IExpressNecesaryParams {
      * 
      * @memberof ExpressAPP
      */
-    agregarDocumentacion() {
+    agregarDocumentacion(): void {
         this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
         // * Redirije / a la documentacion
         this.app.get('/', (req, res) => {
@@ -63,7 +63,7 @@ class ExpressAPP implements IExpressNecesaryFunctions, IExpressNecesaryParams {
      *
      * @memberof ExpressAPP
      */
-    agregarRutas() {
+    agregarRutas(): void {
         const rutaExample = crearRutaExample();
         this.app.use(rutaExample.ruta, rutaExample.router);
     }
@@ -75,7 +75,7 @@ class ExpressAPP implements IExpressNecesaryFunctions, IExpressNecesaryParams {
      * @returns
      * @memberof ExpressAPP
      */
-    crearServidor(port: number) {
+    crearServidor(port: number): void {
         this.server = http.createServer(this.app);
         this.server.listen(port);
     }

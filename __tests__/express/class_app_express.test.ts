@@ -1,6 +1,5 @@
 import ExpressAPP from '../../src/server/ExpressAPP';
 import request from 'supertest';
-import { IExpressNecesaryParams } from '../../src/lib/ExpressNecesary';
 const testPORT = 8081;
 
 describe('Crear servidor usando express', () => {
