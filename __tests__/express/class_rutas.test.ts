@@ -1,22 +1,17 @@
-import Route from "../../src/server/routes/Route";
-import { Router } from 'express';
+import Route from '../../src/lib/Route';
 
 describe('Crea una ruta correctamente', () => {
     it('Crea una instancia de ruta', () => {
-        const anyRouter = Router();
-        const instanceRuta = new Route('/test', anyRouter);
-        const instanceRutaTwo = new Route('testTwo', anyRouter);
+        const instanceRuta = new Route('/test');
+        const instanceRutaTwo = new Route('testTwo');
 
         expect(instanceRuta).toBeInstanceOf(Route);
         expect(instanceRuta.ruta).toBe('/test');
         expect(instanceRutaTwo.ruta).toBe('/testTwo');
-        expect(instanceRuta.router).toBe(anyRouter);
-        
     });
 
-    it('Crea una instancia de ruta agrega /', () => {
-        const anyRouter = Router();
-        const instanceRutaTwo = new Route('testTwo', anyRouter);
-        expect(instanceRutaTwo.ruta).toBe('/testTwo');
+    it('Router es correcto', () => {
+        const instanceRuta = new Route('/test');
+        expect(instanceRuta.router.get).toBeInstanceOf(Function)
     });
 });

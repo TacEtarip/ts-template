@@ -1,5 +1,6 @@
 import {Application} from 'express';
 import {Server} from 'http';
+import Route from '../Route';
 
 /**
  * Interface necesaria para crear una app express
@@ -10,8 +11,8 @@ import {Server} from 'http';
  export interface IExpressNecesaryFunctions {
     agregarConfiguracionBasica() : void;
     agregarDocumentacion() : void;
-    agregarRutas() : void;
-    crearServidor(port: number): void;
+    agregarRuta(route: Route) : void;
+    crearServidor(port: number): Server;
 }
 
 /**

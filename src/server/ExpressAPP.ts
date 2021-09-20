@@ -5,9 +5,9 @@ import swaggerUI from 'swagger-ui-express';
 import swaggerDoc from '../documentation/swaggerDocument.json';
 import morgan from 'morgan';
 import cors from 'cors';
-import {crearRutaExample} from './routes/exampleRoute';
-import { IExpressNecesaryFunctions, IExpressNecesaryParams } from '../lib/ExpressNecesary';
+import { IExpressNecesaryFunctions, IExpressNecesaryParams } from '../lib/util/ExpressNecesary';
 import http from 'http';
+import Route from '../lib/Route';
 
 /**
  *
@@ -18,16 +18,17 @@ import http from 'http';
 class ExpressAPP implements IExpressNecesaryFunctions, IExpressNecesaryParams {
     app: express.Application;
     server: http.Server;
+    port: number;
+    rutas: string[] = ['/api-docs'];
     /**
      *Creates an instance of ExpressAPP.
      * @memberof ExpressAPP
      */
     constructor(port: number) {
         this.app = express();
+        this.port = port;
         this.agregarConfiguracionBasica();
-        this.agregarRutas();
         this.agregarDocumentacion();
-        this.crearServidor(port)
     }
 
     /**
@@ -63,21 +64,22 @@ class ExpressAPP implements IExpressNecesaryFunctions, IExpressNecesaryParams {
      *
      * @memberof ExpressAPP
      */
-    agregarRutas(): void {
-        const rutaExample = crearRutaExample();
-        this.app.use(rutaExample.ruta, rutaExample.router);
+    agregarRuta(route: Route): void {
+        this.rutas.push(route.ruta);
+        this.app.use(route.ruta, route.router);
     }
 
     /**
      * Crear el servidor dado un port, usa el module http
      *
      * @param {number} port
-     * @returns
+     * @returns http.Server
      * @memberof ExpressAPP
      */
-    crearServidor(port: number): void {
+    crearServidor(): http.Server {
         this.server = http.createServer(this.app);
-        this.server.listen(port);
+        this.server.listen(this.port);
+        return this.server;
     }
 }
 

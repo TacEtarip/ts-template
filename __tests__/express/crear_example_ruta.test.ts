@@ -1,7 +1,7 @@
 import { crearRutaExample } from '../../src/server/routes/exampleRoute'
 import ExpressAPP from '../../src/server/ExpressAPP';
 import request from 'supertest';
-import Route from '../../src/server/routes/Route';
+import Route from '../../src/lib/Route';
 
 const rutaBase = '/example';
 
@@ -13,6 +13,7 @@ describe('Ejemplo de test para la creacion correcta de una ruta', () => {
         appExp = new ExpressAPP(8082);
         rutaCreada = crearRutaExample();
         appExp.app.use(rutaCreada.ruta, rutaCreada.router);
+        appExp.crearServidor();
     });
 
     it('La ruta base es la adecuada', () => {
